@@ -1,0 +1,19 @@
+﻿version: "3.9"
+
+networks:
+  test-task-network:
+    name: test-task-network
+    external: false
+
+services:
+  postgresql:
+    image: postgres:14.6-alpine3.16
+    container_name: "postgresql"
+    environment:
+      POSTGRES_DB: "db"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+    ports:
+      - "5432:5432"
+    networks:
+      - test-task-network
